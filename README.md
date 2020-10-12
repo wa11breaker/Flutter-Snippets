@@ -28,3 +28,24 @@ CircularProgressIndicator(
       child: new CircularProgressIndicator(),
 )
 ```
+ ##### TextField search delay
+ ```dart
+ TextEditingController _controller = TextEditingController();
+ Timer timer;
+
+ _controller.addListener(() {
+  if (!_controller.text.isEmpty) {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
+    timer = Timer(Duration(seconds: 1), httpCall);
+  }
+});
+
+httpCall() {
+  try {
+    print(_controller.text);
+  } catch (_) {}
+}
+ ```
